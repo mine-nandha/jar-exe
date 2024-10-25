@@ -1,0 +1,49 @@
+name: Build and Package Spring Boot App 1
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Set environment variable
+        run: echo "SERVER_PORT=3000" >> $GITHUB_ENV
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+
+      - name: Download Launch4j
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          curl -L -o launch4j.tgz "https://excellmedia.dl.sourceforge.net/project/launch4j/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz?viasf=1"
+          tar -xzf launch4j.tgz
+          ls -l launch4j  # List the contents of the launch4j directory to check extraction
+      - name: Create executable with Launch4j
+        run: |
+          cd launch4j
+          sed -i -e 's/\r$//' launch4j
+          ./launch4j ../launch4j-config.xml
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            target/jar-exe-0.0.1-SNAPSHOT.jar
+            launch4j/target/jarToExe.exe
