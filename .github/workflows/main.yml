@@ -3,10 +3,10 @@ name: Build and Package Spring Boot App
 on:
   push:
     branches:
-      - main  # Change to your default branch
+      - main
   pull_request:
     branches:
-      - main  # Change to your default branch
+      - main
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Change to your required Java version
+          java-version: '17'
           distribution: 'adopt'
 
       - name: Set environment variable
@@ -30,7 +30,7 @@ jobs:
 
       - name: Download Launch4j
         run: |
-          curl -L -o launch4j.zip https://sourceforge.net/projects/launch4j/files/latest/download
+          wget -L -o launch4j.zip https://sourceforge.net/projects/launch4j/files/latest/download
           unzip -q launch4j.zip -d launch4j
 
       - name: Create executable with Launch4j
