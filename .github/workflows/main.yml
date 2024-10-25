@@ -30,8 +30,8 @@ jobs:
 
       - name: Download Launch4j
         run: |
-          wget -q https://github.com/luchsh/launch4j/releases/download/launch4j-3.16/launch4j-3.16.zip
-          unzip -q launch4j-3.16.zip -d launch4j
+          curl -L -o launch4j.zip https://github.com/luchsh/launch4j/releases/download/launch4j-3.16/launch4j-3.16.zip
+          unzip -q launch4j.zip -d launch4j
 
       - name: Create executable with Launch4j
         run: |
