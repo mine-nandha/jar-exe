@@ -32,6 +32,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip
+          mkdir -p launch4j
           curl -L -o launch4j.tgz "https://excellmedia.dl.sourceforge.net/project/launch4j/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz?viasf=1"
           tar -xzf launch4j.tgz -C launch4j
 
