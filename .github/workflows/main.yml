@@ -32,12 +32,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip
-          mkdir -p launch4j
+          mkdir -p launch4j  # Create the launch4j directory
           curl -L -o launch4j.tgz "https://excellmedia.dl.sourceforge.net/project/launch4j/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz?viasf=1"
           tar -xzf launch4j.tgz -C launch4j
+          ls -l launch4j  # List the contents of the launch4j directory to check extraction
 
       - name: Create executable with Launch4j
         run: |
+          ls -l launch4j/  # List contents of the launch4j directory
+          ls -l launch4j/launch4j-3.50  # List contents of the extracted directory
           cd launch4j/launch4j-3.50
           ./launch4j ../launch4j-config.xml
 
