@@ -30,18 +30,20 @@ jobs:
 
       - name: Download Launch4j
         run: |
-          wget -L -o launch4j.zip https://sourceforge.net/projects/launch4j/files/latest/download
-          unzip -q launch4j.zip -d launch4j
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          curl -L -o launch4j.tgz "https://excellmedia.dl.sourceforge.net/project/launch4j/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz?viasf=1"
+          tar -xzf launch4j.tgz -C launch4j
 
       - name: Create executable with Launch4j
         run: |
-          cd launch4j
-          ./launch4j ../launch4j-config.xml  # Update with the path to your configuration file
+          cd launch4j/launch4j-3.50
+          ./launch4j ../launch4j-config.xml
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
-            target/jar-exe-0.0.1-SNAPSHOT.jar  # Change this to match your jar file name
-            launch4j/target/jarToExe.exe  # Change to your output exe name
+            target/jar-exe-0.0.1-SNAPSHOT.jar
+            launch4j/launch4j-3.50/target/jarToExe.exe
