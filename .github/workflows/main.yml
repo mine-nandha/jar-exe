@@ -39,6 +39,7 @@ jobs:
       - name: Create executable with Launch4j
         run: |
           cd launch4j
+          sed -i -e 's/\r$//' launch4j
           ./launch4j ../launch4j-config.xml
 
       - name: Upload Artifacts
