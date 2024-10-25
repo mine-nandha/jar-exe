@@ -1,0 +1,6 @@
+<launch4jConfig>
+	<output>target/jarToExe.exe</output>
+	<jar>target/jar-exe-0.0.1-SNAPSHOT.jar</jar>
+	<jre>
+		<minVersion>11</minVersion></jre>
+	<mainClass>com.mine.jar_exe.JarExeApplication</mainClass></launch4jConfig>
