@@ -4,22 +4,21 @@
   <headerType>console</headerType>
   <jar>./target/jar-exe-0.0.1-SNAPSHOT.jar</jar>
   <outfile>./target/jar.exe</outfile>
-  <errTitle></errTitle>
+  <errTitle>My Application Error</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
-  <downloadUrl></downloadUrl>
-  <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
-  <manifest></manifest>
   <icon></icon>
   <var>SERVER_PORT=3000</var>
+  
   <jre>
-    <path>%JAVA_HOME%;%PATH%</path>
+    <!-- Set a generic path to the JRE for GitHub Actions, using Java 17 -->
+    <path>/usr/lib/jvm/java-17-adoptopenjdk</path>
     <requiresJdk>false</requiresJdk>
-    <requires64Bit>false</requires64Bit>
-    <minVersion></minVersion>
+    <requires64Bit>true</requires64Bit>
+    <minVersion>1.8.0</minVersion>
     <maxVersion></maxVersion>
   </jre>
 </launch4jConfig>
