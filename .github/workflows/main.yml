@@ -32,7 +32,6 @@ jobs:
           curl -L -o launch4j.tgz "https://excellmedia.dl.sourceforge.net/project/launch4j/launch4j-3/3.50/launch4j-3.50-linux-x64.tgz?viasf=1"
           tar -xzf launch4j.tgz
           sed -i -e 's/\r$//' launch4j/launch4j
-          chmod +x launch4j/launch4j
 
       - name: Create executable with Launch4j
         run: |
